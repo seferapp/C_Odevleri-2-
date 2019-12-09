@@ -1,0 +1,202 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int satir, sutun, satirSay = 0, sutunSay = 0;
+    printf("Kac satir?");
+    scanf("%d", &satir);
+    printf("Kac Sutun?");
+    scanf("%d", &sutun);
+
+    int matris[satir][sutun];
+
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun; sutunSay++)
+        {
+            printf("%d satir %d sutun: ",satirSay+1,sutunSay+1);
+            scanf("%d", &matris[satirSay][sutunSay]);
+            printf("\n");
+        }
+    }
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun; sutunSay++)
+        {
+            printf("%3d", matris[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+    int satir1, sutun1;
+    printf("*******\n Ikinci matris icin: \n");
+    printf("Kac satir?: ");
+    scanf("%d", &satir1);
+    printf("Kac Sutun?: ");
+    scanf("%d", &sutun1);
+    int matris1[satir1][sutun1];
+
+    for(satirSay = 0; satirSay < satir1; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%d satir %d sutun: ",satirSay+1,sutunSay+1);
+            scanf("%d", &matris1[satirSay][sutunSay]);
+            printf("\n");
+        }
+    }
+    for(satirSay = 0; satirSay < satir1; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%3d", matris1[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+
+    if(sutun != satir1)
+    {
+        printf("Matrislerin boyutlari uyumsuz. Islem iptal edildi.");
+        return 0;
+    }
+
+    printf("\nCarpma islemi basliyor:\n");
+    int sayac, satirSayac, sutunSayac, deger;
+    int sonucMatrisi[satir][sutun1];
+    for(satirSayac = 0; satirSayac<satir; satirSayac++)
+    {
+        for(sutunSayac = 0; sutunSayac<sutun1; sutunSayac++)
+        {
+            deger = 0;
+            for(sayac = 0; sayac<sutun; sayac++)
+            {
+                deger += matris[satirSayac][sayac]*matris1[sayac][sutunSayac];
+            }
+            sonucMatrisi[satirSayac][sutunSayac] = deger;
+        }
+
+    }
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%3d", sonucMatrisi[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+
+    printf("\nBölme islemi basliyor:\n");
+  sayac=0;
+   satirSayac=0;
+   sutunSayac=0;
+    deger=0;
+    for(satirSayac = 0; satirSayac<satir; satirSayac++)
+    {
+        for(sutunSayac = 0; sutunSayac<sutun1; sutunSayac++)
+        {
+            deger = 0;
+            for(sayac = 0; sayac<sutun; sayac++)
+            {
+                deger += matris[satirSayac][sayac]/matris1[sayac][sutunSayac];
+            }
+            sonucMatrisi[satirSayac][sutunSayac] = deger;
+        }
+
+    }
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%3d", sonucMatrisi[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+    printf("\ntoplama islemi basliyor:\n");
+    sayac=0;
+   satirSayac=0;
+   sutunSayac=0;
+    deger=0;
+    for(satirSayac = 0; satirSayac<satir; satirSayac++)
+    {
+        for(sutunSayac = 0; sutunSayac<sutun1; sutunSayac++)
+        {
+            deger = 0;
+            for(sayac = 0; sayac<sutun; sayac++)
+            {
+                deger += matris[satirSayac][sayac]+matris1[sayac][sutunSayac];
+            }
+            sonucMatrisi[satirSayac][sutunSayac] = deger;
+        }
+
+    }
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%3d", sonucMatrisi[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+    printf("\nCikarma islemi basliyor:\n");
+   sayac=0;
+   satirSayac=0;
+   sutunSayac=0;
+    deger=0;
+    for(satirSayac = 0; satirSayac<satir; satirSayac++)
+    {
+        for(sutunSayac = 0; sutunSayac<sutun1; sutunSayac++)
+        {
+            deger = 0;
+            for(sayac = 0; sayac<sutun; sayac++)
+            {
+                deger += matris[satirSayac][sayac]-matris1[sayac][sutunSayac];
+            }
+            sonucMatrisi[satirSayac][sutunSayac] = deger;
+        }
+
+    }
+    for(satirSay = 0; satirSay < satir; satirSay++)
+    {
+        for(sutunSay = 0; sutunSay < sutun1; sutunSay++)
+        {
+            printf("%3d", sonucMatrisi[satirSay][sutunSay]);
+        }
+        printf("\n");
+    }
+
+
+    int matrisT[sutun1][satir1];
+    int a=satir1;
+    int b=sutun1;
+    int i=0,j=0;
+    //Matrisin Transpozunu alma
+    for(i=0; i<a; i++)
+    {
+        for(j=0; j<b; j++)
+        {
+            matrisT[j][i] = matris1[i][j];
+        }
+    }
+
+    // Matris elemanlarını ekrana yazdırma
+    for(i=0; i<a; i++)
+    {
+        for(j=0; j<b; j++)
+        {
+            printf("%d ", matris1[i][j]);
+        }
+        printf("\n");
+    }
+    // Matrisin Transpozunun Ekrana Yazdırma
+    printf("Transpozu\n");
+    for(i=0; i<b; i++)
+    {
+        for(j=0; j<a; j++)
+        {
+            printf("%d ", matrisT[i][j]);
+        }
+        printf("\n");
+    }
+
+    getch();
+    return 0;
+}
